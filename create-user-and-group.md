@@ -50,8 +50,8 @@ In this task, you will create and configure user accounts. User accounts will st
 
     | Setting | Value |
     | --- | --- |
-    | User principal name | `az104-user1` |
-    | Display name | `az104-user1` |
+    | User principal name | `az-user1` |
+    | Display name | `az-user1` |
     | Auto-generate password | **checked** |
     | Account enabled | **checked** |
     | Job title (Properties tab) | `IT Lab Administrator` |
@@ -117,7 +117,7 @@ In this task, you create a group account. Group accounts can include user accoun
 
 1. Select **No members selected**.
 
-1. In the **Add members** pane, search for and **select** the **az104-user1** and the **guest user** you invited. Add both of the users to the group. 
+1. In the **Add members** pane, search for and **select** the **az-user1** and the **guest user** you invited. Add both of the users to the group. 
 
 1. Select **Create** to deploy the group.
 
