@@ -1,4 +1,4 @@
-## Lab Instructions: Automating Azure Blob Storage Access Tier Management
+## Lab: Automating Azure Blob Storage Access Tier Management
 
 In this lab, you will learn how to automate the management of Azure Blob Storage access tiers based on defined policies. 
 Specifically, you will create rules to change blob access tiers based on their last modified date and filter by specific folder locations and file types.
