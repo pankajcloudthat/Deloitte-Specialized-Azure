@@ -1,4 +1,4 @@
-## Lab Instructions: Managing Azure Blob Storage Access Tiers
+## Lab: Managing Azure Blob Storage Access Tiers
 
 In this lab, you will learn how to manage Azure Blob Storage access tiers, including how to manually change access tiers and rehydrate archived blobs. 
 The focus is on optimizing storage costs based on data usage patterns.
