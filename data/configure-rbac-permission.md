@@ -1,4 +1,4 @@
-## Lab Instructions: Configuring RBAC Permissions for Azure Storage Account
+## Lab: Configuring RBAC Permissions for Azure Storage Account
 
 In this lab, you will learn how to configure Role-Based Access Control (RBAC) permissions on an Azure Storage account. Specifically, you will create users and a security group in **Microsoft Entra ID** (formerly Azure AD), assign roles to control access to storage account blobs, and set permissions for both individual users and groups.
 
