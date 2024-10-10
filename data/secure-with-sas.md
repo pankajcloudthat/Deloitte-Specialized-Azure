@@ -1,6 +1,6 @@
-## Detailed Lab Instructions: Configuring Shared Access Signatures (SAS) for Azure Storage
+## Lab: Configuring Shared Access Signatures (SAS) for Azure Storage
 
-In this lab, you will follow detailed instructions to create and configure different types of **Shared Access Signatures (SAS)** for an Azure Storage account. These include:
+In this lab, you will create and configure different types of **Shared Access Signatures (SAS)** for an Azure Storage account. These include:
 
 1. Creating an **Account SAS** to provide access to the entire storage account.
 2. Creating a **Service SAS** for granular access to a specific container.
