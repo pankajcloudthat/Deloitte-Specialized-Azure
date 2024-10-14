@@ -1,4 +1,4 @@
-# Lab 05: Deploy compute workloads by using images and containers
+# Lab: Deploy compute workloads by using images and containers
 
 ## Microsoft Azure user interface
 
