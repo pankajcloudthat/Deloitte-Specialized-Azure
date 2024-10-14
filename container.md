@@ -155,14 +155,14 @@ In this lab, you will explore how to create and deploy containers to the Azure C
 1. Run the following command to execute the application:
 
     ```powershell
-    Compress-Archive -Path .\* -DestinationPath .\lab05.zip
+    Compress-Archive -Path .\* -DestinationPath .\lab.zip
     ```
 
 #### Task 5: Create a Container Registry resource
 
 1. Switch to the browser window displaying the Azure portal. 
 
-1. In the Azure portal, select the **Cloud Shell** icon ![Cloud Shell icon](https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure/blob/master/Instructions/Labs/media/l05_create_container_instance.png) to open a the Cloud Shell. If Cloud Shell defaults to a PowerShell session, select **Switch to Bash** in the **Cloud Shell** menu and then select **Confirm**.
+1. In the Azure portal, select the **Cloud Shell** icon to open a the Cloud Shell. If Cloud Shell defaults to a PowerShell session, select **Switch to Bash** in the **Cloud Shell** menu and then select **Confirm**.
 
     > **Note**: The **Cloud Shell** icon is represented by a greater than sign (\>) and underscore character (\_).
 
@@ -176,7 +176,7 @@ In this lab, you will explore how to create and deploy containers to the Azure C
 
 1. In the **Cloud Shell** pane, select **Manage files** and, in the drop-down menu, select **Upload**.
 
-1. In the **Open** dialog box, navigate to the **Allfiles (F):\\Allfiles\\Labs\\05\\Starter** empty directory, select **lab05.zip**, and then select **Open**.
+1. In the **Open** dialog box, navigate to the **C:\lab** empty directory, select **lab.zip**, and then select **Open**.
 
     > **Note**: This will upload the file to the **/~** directory within the **Cloud Shell** session.
 
