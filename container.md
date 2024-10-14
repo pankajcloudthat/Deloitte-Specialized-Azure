@@ -336,7 +336,7 @@ In this exercise, you created a .NET console application to display a machine’
 
     The following screenshot displays the configured settings on the **Create container instance** blade.
 
-    ![Create container instance blade](./media/l05_create_container_instance.png)
+    ![Create container instance blade](https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/Instructions/Labs/media/l05_create_container_instance.png)
 
     > **Note**: Wait for the container instance to be created before you continue with this lab.
 
@@ -367,7 +367,7 @@ In this exercise, you created a .NET console application to display a machine’
 
     The following screenshot displays the configured settings on the **Create container instance** blade.
 
-    ![Create container instance blade](./media/l05_create_container_instance_manual.png)
+    ![Create container instance blade](https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/Instructions/Labs/media/l05_create_container_instance_manual.png)
 
 1. From the **Review + create** tab, review the selected options.
 
@@ -401,74 +401,3 @@ In this exercise, you created a .NET console application to display a machine’
 In this exercise, you used multiple methods to deploy a container image to an Azure container instance. By using the manual method, you were able to customize the deployment further and to run task-based applications as part of a container run.
 
 
-### Exercise 3: Create a secure Container Apps environment and deploy container app.
-
-#### Task 1: Prepare your environment
-
-1. Sign in to the Azure portal.
-
-1. Select the **Cloud Shell** icon, select the **Bash** environment.
-
-1. In the **Cloud Shell** command prompt in the portal, run the following command to install the Azure Container Apps extension for the CLI: 
-
-    ```bash
-    az extension add --name containerapp --upgrade
-    ```
-
-1. Run the following command to register the Microsoft.App namespace: 
-
-    ```bash
-    az provider register --namespace Microsoft.App
-    ```
-   
-   > **Note**: Azure Container Apps resources have migrated from the **Microsoft.Web** namespace to the **Microsoft.App** namespace.
-
-1. Run the following command to Register the **Microsoft.OperationalInsights** provider for the Azure Monitor Log Analytics workspace if you haven't used it before: 
-
-    ```bash
-    az provider register --namespace Microsoft.OperationalInsights
-    ```
-
-    > **Note**: Registering the **Microsoft.App** namespace and **Microsoft.OperationalInsights** can each take a few minutes to complete.
-
-1. Set environment variables used later in this exercise. 
-   
-   ```bash
-     myRG=ContainerCompute
-     myAppContEnv=az204-env-$RANDOM
-    ```
-
-With the CLI upgraded and environment variables created, you can create a Container Apps environment and deploy your container app.
-
-#### Task 2: Create an environment
-
-An environment in Azure Container Apps creates a secure boundary around a group of container apps. Container Apps deployed to the same environment are deployed in the same virtual network and write logs to the same Log Analytics workspace.
-
-1. In the **Cloud Shell** command prompt in the portal, run the following command to create an environment by using the `az containerapp env` create command: 
-
-    ```bash
-    az containerapp env create \
-        --name $myAppContEnv \
-        --resource-group $myRG \
-        --location eastus
-    ```
-
-#### Task 3: Create a container app
-
-After the container app environment finishes deployment, you deploy a container image to Azure Container Apps.
-
-1. In the **Cloud Shell** command prompt in the portal, run the following command to deploy a sample app container image by using the `az containerapp create` command: 
-
-    ```bash
-    az containerapp create \
-        --name my-container-app \
-        --resource-group $myRG \
-        --environment $myAppContEnv \
-        --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
-        --target-port 80 \
-        --ingress 'external' \
-        --query properties.configuration.ingress.fqdn
-    ```
-By setting `--ingress` to `external`, you make the container app available to public requests. The command returns a link to access your app.
-
-1. Select the link returned by the `az containerapp create` command to verify the container app is running.
