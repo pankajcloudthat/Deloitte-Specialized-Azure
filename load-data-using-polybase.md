@@ -129,7 +129,7 @@ You will also create a new `Sale` clustered columnstore table within the `wwi_st
         CLUSTERED COLUMNSTORE INDEX,
         PARTITION
         (
-            [TransactionDate] RANGE RIGHT FOR VALUES (20180901, 20181001, 20181101, 20181201, 20190101, 20190201, 20190301, 20190401, 20190501, 20190601, 20190701, 20190801, 20190901, 20191001, 20191101, 20191201)
+            [TransactionDate] RANGE RIGHT FOR VALUES (20190101, 20190201, 20190301, 20190401, 20190501, 20190601, 20190701, 20190801, 20190901, 20191001, 20191101, 20191201)
         )
     )
     ```
@@ -144,18 +144,27 @@ PolyBase requires the following elements:
 - An external file format for Parquet files
 - An external table that defines the schema for the files, as well as the location, data source, and file format
 
-1. In the query window, replace the script with the following to create the external data source. Be sure to replace `SUFFIX` with the lab workspace id:
+1. In the query window, replace the script with the following to create the external data source.
 
     ```sql
+    IF NOT EXISTS (SELECT * FROM sys.symmetric_keys) BEGIN
+    declare @pasword nvarchar(400) = CAST(newid() as VARCHAR(400));
+    EXEC('CREATE MASTER KEY ENCRYPTION BY PASSWORD = ''' + @pasword + '''')
+    END
+
+    CREATE DATABASE SCOPED CREDENTIAL ABSS_SCOPE
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+    SECRET = 'sp=rwdle&st=2024-10-20T08:16:13Z&se=2024-10-26T16:16:13Z&spr=https&sv=2022-11-02&sr=c&sig=EPJYTipmGX1bsI5TOve0Po634YDOVOgL9z9Y35ebQ4Y%3D';
+
+
     -- Replace SUFFIX with the lab workspace id.
     CREATE EXTERNAL DATA SOURCE ABSS
     WITH
     ( TYPE = HADOOP,
-        LOCATION = 'abfss://wwi-02@asadatalakeSUFFIX.dfs.core.windows.net'
+        LOCATION = 'abfss://wwi-02@asastorage34x.dfs.core.windows.net',
+        CREDENTIAL = ABSS_SCOPE
     );
     ```
-
-    You can find the lab workspace id at the end of the Synapse Analytics workspace name.
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
