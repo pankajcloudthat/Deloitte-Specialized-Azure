@@ -13,6 +13,7 @@ Before starting this lab, ensure you have successfully completed the setup steps
 
 **Step 4**: Upload the extracted files to the awdata directory
 
+---
 
 ### Create Star Schema and Query the data
 
