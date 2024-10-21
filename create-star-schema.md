@@ -1,5 +1,21 @@
 ## Lab: Implementing a Star Schema in Synapse
 
+### Lab setup and pre-requisites
+Before starting this lab, ensure you have successfully completed the setup steps to create your lab environment. 
+
+### Task 1: Upload CSV file to Data Lake Storage account
+
+**Step 1** : Create a container named `data`
+
+**Step 2** : Create a new folder in **data** container named 'awdata'
+
+**Step 3**: Download awdata file and extract it [Click here to download](https://github.com/pankajcloudthat/Deloitte-Specialized-Azure/blob/main/awdata.zip)
+
+**Step 4**: Upload the extracted files to the awdata directory
+
+
+### Create Star Schema and Query the data
+
 For larger data sets you may implement your data warehouse in Azure Synapse instead of SQL Server. Star schema models are still a best practice for modeling data in Synapse dedicated SQL pools. You may notice some differences with creating tables in Synapse Analytics vs. SQL database, but the same data modeling principles apply.
 
 When you create a star schema or snowflake schema in Synapse, it requires some changes to your table creation scripts. In Synapse, you do not have foreign keys and unique value constraints like you do in SQL Server. Since these rules are not enforced at the database layer, the jobs used to load data are more responsible to maintain data integrity. You still have the option to use clustered indexes, but for most dimension tables in Synapse you will benefit from using a clustered columnstore index (CCI).
