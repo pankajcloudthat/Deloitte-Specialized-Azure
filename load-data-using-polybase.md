@@ -31,17 +31,11 @@ This lab uses the dedicated SQL pool. As a first step, make sure it is not pause
 
 1. Open Synapse Studio (<https://web.azuresynapse.net/>).
 
-2. Select the **Manage** hub.
-
-    ![The manage hub is highlighted.](images/manage-hub.png "Manage hub")
+2. Select the **Manage** hub.  
 
 3. Select **SQL pools** in the left-hand menu **(1)**. If the dedicated SQL pool is paused, hover over the name of the pool and select **Resume (2)**.
 
-    ![The resume button is highlighted on the dedicated SQL pool.](images/resume-dedicated-sql-pool.png "Resume")
-
 4. When prompted, select **Resume**. It will take a minute or two to resume the pool.
-
-    ![The resume button is highlighted.](images/resume-dedicated-sql-pool-confirm.png "Resume")
 
     > **Continue to the next exercise** while the dedicated SQL pool resumes.
 
@@ -73,15 +67,9 @@ You will also create a new `Sale` clustered columnstore table within the `wwi_st
 
 1. Open Synapse Analytics Studio (<https://web.azuresynapse.net/>), and then navigate to the **Develop** hub.
 
-    ![The Develop menu item is highlighted.](images/develop-hub.png "Develop hub")
-
 2. From the **Develop** menu, select the + button and choose **SQL Script** from the context menu.
 
-    ![The SQL script context menu item is highlighted.](images/synapse-studio-new-sql-script.png "New SQL script")
-
 3. In the toolbar menu, connect to the **SQL Pool** database to execute the query.
-
-    ![The connect to option is highlighted in the query toolbar.](images/synapse-studio-query-toolbar-connect.png "Query toolbar")
 
 4. In the query window, replace the script with the following to create the `wwi_staging` schema:
 
@@ -89,8 +77,6 @@ You will also create a new `Sale` clustered columnstore table within the `wwi_st
     CREATE SCHEMA [wwi_staging]
     ```
 5. Select **Run** from the toolbar menu to execute the SQL command.
-
-    ![The run button is highlighted in the query toolbar.](images/synapse-studio-query-toolbar-run.png "Run")
 
     > **Note:** If you receive the following error, continue to the next step: `Failed to execute query. Error: There is already an object named 'wwi_staging' in the database. CREATE SCHEMA failed due to previous errors.`
 
@@ -169,9 +155,7 @@ PolyBase requires the following elements:
     );
     ```
 
-    You can find the lab workspace id at the end of the Synapse Analytics workspace name, as well as your user name:
-
-    ![The suffix is highlighted.](images/data-lake-suffix.png "Data lake suffix")
+    You can find the lab workspace id at the end of the Synapse Analytics workspace name.
 
 2. Select **Run** from the toolbar menu to execute the SQL command.
 
@@ -315,8 +299,6 @@ The data has the following fields: `Date`, `NorthAmerica`, `SouthAmerica`, `Euro
 4. Select **Run** from the toolbar menu to execute the SQL command.
 
 5. Try viewing the results in a Chart and set the **Category column** to `Date`:
-
-    ![The results are displayed in a chart.](images/daily-sales-counts-chart.png "DailySalesCounts chart")
 
 ### Task 5: Use PolyBase to load text file with non-standard row delimiters
 
