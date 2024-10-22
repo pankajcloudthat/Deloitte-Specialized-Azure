@@ -74,12 +74,12 @@ $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName
 
 # Creating new container wwi-02
 $containerName = "wwi-02"
-$container = Get-AzStorageContainer -Name $containerName -Context $storageContext -ErrorAction SilentlyContinue
+$container = Get-AzStorageContainer -Name $containerName -Context $dataLakeContext -ErrorAction SilentlyContinue
 if ($container) {
     Write-Host "Container '$containerName' already exists."
 } else {
     # Create the new container if it doesn't exist
-    New-AzStorageContainer -Name $containerName -Context $storageContext
+    New-AzStorageContainer -Name $containerName -Context $dataLakeContext
     Write-Host "Container '$containerName' created successfully."
 }
 
