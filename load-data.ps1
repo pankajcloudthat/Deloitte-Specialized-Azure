@@ -73,7 +73,15 @@ $dataLakeStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resour
 $dataLakeContext = New-AzStorageContext -StorageAccountName $dataLakeAccountName -StorageAccountKey $dataLakeStorageAccountKey
 
 # Creating new container wwi-02
-New-AzStorageContainer -Name "wwi-02" -Context $dataLakeContext
+$containerName = "wwi-02"
+$container = Get-AzStorageContainer -Name $containerName -Context $storageContext -ErrorAction SilentlyContinue
+if ($container) {
+    Write-Host "Container '$containerName' already exists."
+} else {
+    # Create the new container if it doesn't exist
+    New-AzStorageContainer -Name $containerName -Context $storageContext
+    Write-Host "Container '$containerName' created successfully."
+}
 
 $destinationSasKey = New-AzStorageContainerSASToken -Container "wwi-02" -Context $dataLakeContext -Permission rwdl
 
