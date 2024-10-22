@@ -295,7 +295,10 @@
 4. In the query window, replace the script with the following to create an improved version of the table using CTAS (Create Table As Select):
 
      ```sql
-    CREATE TABLE [wwi_perf].[Sale_Hash]
+   CREATE SCHEMA wwi_perf
+   GO
+     
+   CREATE TABLE [wwi_perf].[Sale_Hash]
     WITH
     (
         DISTRIBUTION = HASH ( [CustomerId] ),
@@ -308,7 +311,7 @@
         [wwi_staging].[SaleHeap]
     ```
 
-5. Select **Run** from the toolbar menu to execute the SQL command.
+6. Select **Run** from the toolbar menu to execute the SQL command.
 
     > **NOTE**
     >
@@ -317,7 +320,7 @@
     >
     > With CTAS, on the other hand, you can specify both the distribution of the table data as well as the table structure type.
 
-6. In the query window, replace the script with the following to see performance improvements:
+7. In the query window, replace the script with the following to see performance improvements:
 
     ```sql
     SELECT TOP 1000 * FROM
@@ -332,11 +335,11 @@
     ) T
     ```
 
-7. Select **Run** from the toolbar menu to execute the SQL command.
+8. Select **Run** from the toolbar menu to execute the SQL command.
 
     You should see a performance improvement executing against the new Hash table compared to the first time we ran the script against the Heap table.
 
-8. Run the following EXPLAIN statement again to get the query plan (do not select `Query Plan` from the toolbar as it will try do download the query plan and open it in SQL Server Management Studio):
+9. Run the following EXPLAIN statement again to get the query plan (do not select `Query Plan` from the toolbar as it will try do download the query plan and open it in SQL Server Management Studio):
 
     ```sql
     EXPLAIN
@@ -386,9 +389,6 @@ Date columns are usually good candidates for partitioning tables at the distribu
 1. In the query window, replace the script with the following CTAS queries that create the partition tables:
 
     ```sql
-    CREATE SCHEMA wwi_perf
-    GO
-
     CREATE TABLE [wwi_perf].[Sale_Partition01]
     WITH
     (
@@ -404,7 +404,7 @@ Date columns are usually good candidates for partitioning tables at the distribu
     SELECT
       *
     FROM	
-      [wwi_perf].[Sale_Heap]
+      [wwi_staging].[SaleHeap]
     OPTION  (LABEL  = 'CTAS : Sale_Partition01')
     GO
 
@@ -422,7 +422,7 @@ Date columns are usually good candidates for partitioning tables at the distribu
     AS
     SELECT *
     FROM
-        [wwi_perf].[Sale_Heap]
+        [wwi_staging].[SaleHeap]
     OPTION  (LABEL  = 'CTAS : Sale_Partition02')
     GO
     ```
