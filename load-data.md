@@ -24,7 +24,7 @@
    nano load-data.ps1
    ```
    
-5. Copy the content of file [data-load-wwi-02.txt](https://raw.githubusercontent.com/pankajacks/azdata/refs/heads/main/data-load-wwi-02.txt) and past in above created file.
+5. Copy the content of file [data-load-wwi-02.txt](https://raw.githubusercontent.com/pankajcloudthat/Deloitte-Specialized-Azure/refs/heads/main/load-data.ps1) and past in above created file.
 6. To Save the file press **Ctrl + O** and then enter key.
 7. Close the Nano edit, press **Ctrl + X** and then enter key.
 8. Obtained the following information of **Synapse Default Storage Account** overview page from Azure Portal:
