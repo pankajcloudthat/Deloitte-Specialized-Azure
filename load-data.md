@@ -48,7 +48,7 @@
     - *Enter Resource Group Name where your storage account is created*
 
 
-7. Open Azure portal, go to the Azure Data Lake Gen 2 Storage account that you created in previous lab and create a new container **wwi-02**.
+13. Open Azure portal, go to the Azure Data Lake Gen 2 you will see a new container **wwi-02** is created and data is loaded into it.
 
 
     
