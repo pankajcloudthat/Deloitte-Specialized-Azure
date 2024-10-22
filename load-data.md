@@ -35,7 +35,7 @@
 9. Now in **Power Shell**, enter the following command to run the setup script:
         
     ```
-    .\data-load.ps1
+    .\load-data.ps1
     ```
 
 10. When prompted to sign into Azure, and click on the link it will open in browser; Enter the code which is also given in power shell window. After signing in, you can close the browser and return to Windows PowerShell.
