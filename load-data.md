@@ -47,8 +47,8 @@
     - *Enter Storage Account Name*
     - *Enter Resource Group Name where your storage account is created*
 
-
-13. Open Azure portal, go to the Azure Data Lake Gen 2 you will see a new container **wwi-02** is created and data is loaded into it.
+13. After you enter the above information the setup will run for 5 minute (max).
+14. Open Azure portal, go to the Azure Data Lake Gen 2 you will see a new container **wwi-02** is created and data is loaded into it.
 
 
     
