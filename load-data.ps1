@@ -99,7 +99,7 @@ if ($download)
 
                 $source = $wwi02.Path + $vals[1];
 
-                $path = $vals[0];
+                $path = $vals[0] + "?";
 
                 $destination = $dataLakeStorageBlobUrl + $path + $destinationSasKey
                 Write-Information "Copying directory $($source) to $($destination)"
