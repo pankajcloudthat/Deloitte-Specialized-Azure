@@ -8,7 +8,7 @@
 
 3. In the toolbar menu, connect to the **SQLPool01** database to execute the query.
 
-4. In the query window, replace the script with the following and before executing replace asadatalakexx with you datalake storage account name in copy statement.
+4. In the query window, replace the script with the following and before executing replace <storage-name> with you datalake storage account name in copy statement.
 
     ```sql
     DROP TABLE [wwi_staging].[SaleHeap]
@@ -40,7 +40,7 @@
 
     -- Replace asadatalakexx with you datalake storage account name.
     COPY INTO wwi_staging.SaleHeap
-    FROM 'https://asadatalakexx.dfs.core.windows.net/wwi-02/sale-small/Year=2019'
+    FROM 'https://<storage-name>.dfs.core.windows.net/wwi-02/sale-small/Year=2019'
     WITH (
         FILE_TYPE = 'PARQUET',
         COMPRESSION = 'SNAPPY'
