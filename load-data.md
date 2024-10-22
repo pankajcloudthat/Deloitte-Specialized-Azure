@@ -16,7 +16,7 @@
 
 3. In **Power Shell**, use the following command to change directories to the folder automation.
     ```
-    cd DP-203-Data-Engineer\Allfiles\00\artifacts\environment-setup\automation\
+    cd Allfiles\00\artifacts\environment-setup\automation\
     ```
 
 4. Create a file in the automation directory as follows:
