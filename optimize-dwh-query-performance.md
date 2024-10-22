@@ -386,6 +386,9 @@ Date columns are usually good candidates for partitioning tables at the distribu
 1. In the query window, replace the script with the following CTAS queries that create the partition tables:
 
     ```sql
+    CREATE SCHEMA wwi_perf
+    GO
+
     CREATE TABLE [wwi_perf].[Sale_Partition01]
     WITH
     (
@@ -403,6 +406,7 @@ Date columns are usually good candidates for partitioning tables at the distribu
     FROM	
       [wwi_perf].[Sale_Heap]
     OPTION  (LABEL  = 'CTAS : Sale_Partition01')
+    GO
 
     CREATE TABLE [wwi_perf].[Sale_Partition02]
     WITH
@@ -420,6 +424,7 @@ Date columns are usually good candidates for partitioning tables at the distribu
     FROM
         [wwi_perf].[Sale_Heap]
     OPTION  (LABEL  = 'CTAS : Sale_Partition02')
+    GO
     ```
 2. Select **Run** from the toolbar menu to execute the SQL command to create the tables.
 
