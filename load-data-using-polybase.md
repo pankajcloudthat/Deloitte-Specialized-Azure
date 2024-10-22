@@ -147,22 +147,11 @@ PolyBase requires the following elements:
 1. In the query window, replace the script with the following to create the external data source.
 
     ```sql
-    IF NOT EXISTS (SELECT * FROM sys.symmetric_keys) BEGIN
-    declare @pasword nvarchar(400) = CAST(newid() as VARCHAR(400));
-    EXEC('CREATE MASTER KEY ENCRYPTION BY PASSWORD = ''' + @pasword + '''')
-    END
-
-    CREATE DATABASE SCOPED CREDENTIAL ABSS_SCOPE
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = 'sp=rwdle&st=2024-10-20T08:16:13Z&se=2024-10-26T16:16:13Z&spr=https&sv=2022-11-02&sr=c&sig=EPJYTipmGX1bsI5TOve0Po634YDOVOgL9z9Y35ebQ4Y%3D';
-
-
-    -- Replace SUFFIX with the lab workspace id.
+    -- Replace <stroage-name> with your storage account name.
     CREATE EXTERNAL DATA SOURCE ABSS
     WITH
     ( TYPE = HADOOP,
-        LOCATION = 'abfss://wwi-02@asastorage34x.dfs.core.windows.net',
-        CREDENTIAL = ABSS_SCOPE
+        LOCATION = 'abfss://wwi-02@<storage-name>.dfs.core.windows.net'
     );
     ```
 
@@ -229,7 +218,7 @@ PolyBase requires the following elements:
 
 Now let's see how to perform the same load operation with the COPY statement.
 
-1. In the query window, replace the script with the following to truncate the heap table and load data using the COPY statement. As you did before, be sure to replace `SUFFIX` with the lab workspace id:
+1. In the query window, replace the script with the following to truncate the heap table and load data using the COPY statement. As you did before, be sure to replace <storage-name> with your storage account name:
 
     ```sql
     TRUNCATE TABLE wwi_staging.SaleHeap;
@@ -237,7 +226,7 @@ Now let's see how to perform the same load operation with the COPY statement.
 
     -- Replace <PrimaryStorage> with the workspace default storage account name.
     COPY INTO wwi_staging.SaleHeap
-    FROM 'https://asadatalakeSUFFIX.dfs.core.windows.net/wwi-02/sale-small/Year=2019'
+    FROM 'https://<storage-name>.dfs.core.windows.net/wwi-02/sale-small/Year=2019'
     WITH (
         FILE_TYPE = 'PARQUET',
         COMPRESSION = 'SNAPPY'
@@ -250,7 +239,7 @@ Now let's see how to perform the same load operation with the COPY statement.
 3. In the query window, replace the script with the following to see how many rows were imported:
 
     ```sql
-    SELECT COUNT(1) FROM wwi_staging.SaleHeap(nolock)
+    SELECT COUNT(1) FROM wwi_staging.SaleHeap
     ```
 
 4. Select **Run** from the toolbar menu to execute the SQL command. You should see a result of `4124857`.
@@ -269,7 +258,7 @@ WWI has a nightly process that ingests regional sales data from a partner analyt
 
 The data has the following fields: `Date`, `NorthAmerica`, `SouthAmerica`, `Europe`, `Africa`, and `Asia`. They must process this data and store it in Synapse Analytics.
 
-1. In the query window, replace the script with the following to create the `DailySalesCounts` table and load data using the COPY statement. As before, be sure to replace `SUFFIX` with the id for your workspace:
+1. In the query window, replace the script with the following to create the `DailySalesCounts` table and load data using the COPY statement. As before, be sure to replace <storage-name> with your storage account name:
 
     ```sql
     CREATE TABLE [wwi_staging].DailySalesCounts
@@ -285,7 +274,7 @@ The data has the following fields: `Date`, `NorthAmerica`, `SouthAmerica`, `Euro
 
     -- Replace <PrimaryStorage> with the workspace default storage account name.
     COPY INTO wwi_staging.DailySalesCounts
-    FROM 'https://asadatalakeSUFFIX.dfs.core.windows.net/wwi-02/campaign-analytics/dailycounts.txt'
+    FROM 'https://<storage-name>.dfs.core.windows.net/wwi-02/campaign-analytics/dailycounts.txt'
     WITH (
         FILE_TYPE = 'CSV',
         FIELDTERMINATOR='.',
