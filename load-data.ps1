@@ -14,10 +14,10 @@ Connect-AzAccount -UseDeviceAuthentication
 $selectedSub = Read-Host "Enter your subscription ID"
 
 # Enter Storage Account Name
-$dataLakeAccountName = Read-Host "Enter your Synapse Deafult Data Lake Name"
+$dataLakeAccountName = Read-Host "Enter your Azure Data Lake Storage Account Name"
 
 # Enter Resource Group Name where your storage account is.
-$resourceGroupName = Read-Host "Enter your Synapse Resource Group Name"
+$resourceGroupName = Read-Host "Enter your Resource Group Name in which ADLS Gen2 is"
 
 
 if(-not ([string]::IsNullOrEmpty($selectedSub)))
